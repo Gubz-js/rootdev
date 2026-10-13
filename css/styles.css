@@ -660,7 +660,7 @@ a {
     justify-content: space-between;
     margin: 0 auto;
     row-gap: 15px;
-    padding: 20px;
+    padding: 25px;
     max-width: 380px;
     border-radius: 20px;
     background-color: var(--cor-fundo-primario);
@@ -670,7 +670,8 @@ a {
 .recomendado {
     color: yellow;
     position: absolute;
-    right: 20px;
+    right: 10px;
+    top: 5px;
 }
 
 .sub-planos ul{
@@ -968,11 +969,11 @@ a {
     }
 
     header {
-        padding: 10px 40px;
+        padding: 10px 20px;
     }
 
     section {
-        padding: 40px 40px;
+        padding: 40px 20px;
     }
 
     .empresas .bloco-empresas {
@@ -997,6 +998,10 @@ a {
 
     .modal-scroll {
         max-height: 100vh;
+    }
+
+    .passos-como {
+        display: none;
     }
 }
 
