@@ -11,13 +11,13 @@
     --fonte-texto: 'Inter', sans-serif;
   }
 
-  body {
+body {
     max-width: 2000px;
     background-image: url(../images/fundo/fundo-body2.jpg);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-  }
+}
 
 section {
     border-bottom: 2px solid transparent;
@@ -63,7 +63,7 @@ section {
 .cta {
     max-width: 280px;
     border-radius: 30px;
-    padding: 12px 40px;
+    padding: 12px 30px;
     color: #000;
     background-color: var(--cor-destaque);
     font-size: 1rem;
@@ -156,30 +156,6 @@ section {
     to { opacity: 1; transform: scale(1); }
 }
 
-.menu-mobile {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    z-index: 9998;
-    display: none;
-}
-
-.menu-mobile.active {
-    display: block;
-}
-
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 9997;
-    display: none;
-}
-
-.overlay.active {
-    display: block;
-}
-
 h1 {
     font-size: 2.6rem;
     color: var(--cor-titulo);
@@ -228,7 +204,17 @@ header {
     background-color: var(--cor-fundo-primario);
     border-bottom: 2px solid transparent;
     border-image: linear-gradient(90deg, transparent, var(--cor-destaque), transparent) 1;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
+    transition: top .25s ease, opacity .25s ease;
+}
+
+.hide-header {
+    opacity: 0;
+    top: -120px;
 }
 
 a {
@@ -300,14 +286,18 @@ a {
 
 .menu-mobile {
     position: fixed;
-    top: 0;
-    right: -100%;
     width: 70%;
     height: 100vh;
     background: var(--cor-fundo-primario);
     padding-top: 80px;
     transition: 0.4s;
-    z-index: 1000;
+    z-index: 2000;
+    display: none;
+}
+
+.menu-mobile.active {
+    pointer-events: all;
+    display: block;
 }
 
 .menu-mobile ul {
@@ -324,10 +314,6 @@ a {
     cursor: pointer;
 }
 
-.menu-mobile.active {
-    right: 0;
-}
-
 .overlay {
     position: fixed;
     top: 0;
@@ -339,7 +325,7 @@ a {
     opacity: 0;
     pointer-events: none;
     transition: 0.3s;
-    z-index: 900;
+    z-index: 999;
 }
 
 .overlay.active {
@@ -352,6 +338,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 130px;
 }
 
 .content-hero {
@@ -591,9 +578,9 @@ a {
     position: relative;
 }
 
-.glow1 { animation: blinkShadow 12s infinite; }
-.glow2 { animation: blinkShadow 12s infinite; animation-delay: 4s; }
-.glow3 { animation: blinkShadow 12s infinite; animation-delay: 8s; }
+.glow1 { animation: blinkShadow 6s infinite; }
+.glow2 { animation: blinkShadow 6s infinite; animation-delay: 2s; }
+.glow3 { animation: blinkShadow 6s infinite; animation-delay: 4s; }
 
 @keyframes blinkShadow {
     0%, 20% {
@@ -649,6 +636,13 @@ a {
     margin: 15px 0px;
 }
 
+.iva {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 6px;
+}
+
 .content-planos {
    margin-top: 30px;
 }
@@ -659,9 +653,9 @@ a {
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    row-gap: 15px;
+    gap: 25px;
     padding: 25px;
-    max-width: 380px;
+    max-width: 360px;
     border-radius: 20px;
     background-color: var(--cor-fundo-primario);
     position: relative;
@@ -710,6 +704,7 @@ a {
     display: flex;
     flex-direction: column;
     max-width: 500px;
+    min-height: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid var(--cor-destaque);
@@ -746,7 +741,7 @@ a {
     border: 1px solid var(--cor-destaque);
     color: var(--cor-texto);
     padding: 5px;
-    min-height: 120px;
+    min-height: 160px;
     resize: none;
     border-radius: 5px 5px 0px 0px;
 }
@@ -884,13 +879,12 @@ a {
         padding: 60px 40px;
     }
 
-    .bloco-planos {
-        margin: 0 auto;
+    #hero {
+        padding-top: 100px;
     }
 
-    .sobre-qualidade {
-        display: flex;
-        flex-wrap: wrap;
+    .bloco-planos {
+        margin: 0 auto;
     }
 
     #footer {
@@ -974,6 +968,10 @@ a {
 
     section {
         padding: 40px 20px;
+    }
+
+    #gatilho {
+        padding: 60px 20px;
     }
 
     .empresas .bloco-empresas {

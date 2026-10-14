@@ -14,11 +14,22 @@ hamburger.addEventListener("click", toggleMenu);
 overlay.addEventListener("click", toggleMenu);
 
 menuMobile.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
+        const destino = document.querySelector(link.getAttribute("href"));
+
+        if (!destino) return;
+
+        e.preventDefault();
+
         menuMobile.classList.remove("active");
         hamburger.classList.remove("active");
         overlay.classList.remove("active");
         document.body.style.overflow = "auto";
+
+        destino.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     });
 });
 
@@ -60,3 +71,22 @@ window.onclick = (e) => {
         fecharModal();
     }
 };
+
+const header = document.querySelector("header");
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  if (menuMobile.classList.contains("active")) return;
+
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > 120 && currentScroll > lastScroll) {
+    header.classList.add("hide-header");
+  } 
+  
+  else if (currentScroll < lastScroll && (currentScroll < 80 || (lastScroll - currentScroll) > 15)) {
+    header.classList.remove("hide-header");
+  }
+
+  lastScroll = currentScroll <= 0 ? 0 : currentScroll; 
+});
